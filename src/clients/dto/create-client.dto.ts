@@ -21,7 +21,6 @@ export class CreateClientDto {
     isAvailable: boolean
     
     @IsString()
-    @IsOptional()
     phone: string
 
     @IsString()

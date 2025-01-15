@@ -13,12 +13,7 @@ export class ClientsService {
   ) {}
 
   async create(createClientDto: CreateClientDto) {
-    const newClient = await this.modelClient.create({
-      ...createClientDto
-    },{
-      include: [Address]
-    }
-  );
+    const newClient = await this.modelClient.create(createClientDto);
     return newClient;
   }
 
@@ -51,7 +46,7 @@ export class ClientsService {
     try {
       client.set({ isDeleted: true });
       client.save();
-      return client
+      return "Client deleted successfully"
     } catch (error) {
       return 'Client not Found'
     }

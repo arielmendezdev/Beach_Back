@@ -7,27 +7,42 @@ import { InjectModel } from '@nestjs/sequelize';
 @Injectable()
 export class AddressesService {
 
-  constructor(@InjectModel(Address) private readonly addressModel: typeof Address) {}
+  constructor(@InjectModel(Address) private readonly modelAddress: typeof Address) {}
 
   create(createAddressDto: CreateAddressDto) {
-    const newAddress = this.addressModel.create(createAddressDto)
+    const newAddress = this.modelAddress.create(createAddressDto)
     return newAddress
   }
 
-  findAll() {
-    const address = this.addressModel.findAll();
-    return address;
+  async findAll() {
+    const address = await this.modelAddress.findAll();
+    if (address.length > 0 ) return address;
+    return 'Not address available'
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} address`;
+  findOne(id: string) {
+    const address = this.modelAddress.findByPk(id);
+    if (address) return address;
+    return `Address ${id} Not Found`;
   }
 
-  update(id: number, updateAddressDto: UpdateAddressDto) {
-    return `This action updates a #${id} address`;
+  async update(id: string, updateAddressDto: UpdateAddressDto) {
+    const addressUpdate = await this.modelAddress.findByPk(id);
+    if (addressUpdate) {
+      addressUpdate.set(updateAddressDto)
+      await addressUpdate.save();
+      return addressUpdate
+    }
+      return `Address ${id} Not Found`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} address`;
+  async remove(id: string) {
+    const address = await this.modelAddress.findByPk(id);
+    if (address) {
+      address.set({ isDeleted: true });
+      await address.save();
+      return address
+    }
+    return `Address ${id} Not Found`;
   }
 }
