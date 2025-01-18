@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateEmployeesDto } from './dto/create-employees.dto';
 import { UpdateEmployeesDto } from './dto/update-employees.dto';
 import { InjectModel } from '@nestjs/sequelize';
-import { Employed } from 'src/database/models/employed.model';
+import { Employed } from '../database/models/employed.model';
 
 @Injectable()
 export class EmployeesService {
