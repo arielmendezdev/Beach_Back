@@ -1,6 +1,13 @@
 import { UUIDTypes } from 'uuid';
-import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from 'sequelize-typescript';
-import { Client } from './clients.model';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+import { User } from './user.model';
 import { Employed } from './employed.model';
 import { Company } from './company.model';
 import { Owner } from './owner.model';
@@ -37,11 +44,11 @@ export class Address extends Model<Address> {
   })
   description: string;
 
-  @ForeignKey(() => Client)
+  @ForeignKey(() => User)
   @Column({
     type: DataType.UUID,
   })
-  clientId: UUIDTypes;
+  userId: UUIDTypes;
 
   @ForeignKey(() => Employed)
   @Column({
@@ -61,16 +68,15 @@ export class Address extends Model<Address> {
   })
   ownerId: UUIDTypes;
 
-  @BelongsTo(() => Client)
-  client!: Client
+  @BelongsTo(() => User)
+  user!: User;
 
   @BelongsTo(() => Employed)
-  employed!: Employed
+  employed!: Employed;
 
   @BelongsTo(() => Company)
-  company!: Company
+  company!: Company;
 
   @BelongsTo(() => Owner)
-  owner!: Owner
-
+  owner!: Owner;
 }

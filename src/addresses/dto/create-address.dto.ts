@@ -4,7 +4,7 @@ export class CreateAddressDto {
 
   @IsString()
   @IsUUID()
-  clientId: string;
+  userId: string;
 
   @IsString()
   nameStreet: string

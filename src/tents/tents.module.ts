@@ -3,10 +3,10 @@ import { TentsService } from './tents.service';
 import { TentsController } from './tents.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Tent } from 'database/models/tent.model';
-import { Client } from 'database/models/clients.model';
+import { User } from 'database/models/user.model';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Tent, Client])],
+  imports: [SequelizeModule.forFeature([Tent, User])],
   exports: [SequelizeModule],
   controllers: [TentsController],
   providers: [TentsService],

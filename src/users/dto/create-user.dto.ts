@@ -1,6 +1,6 @@
 import { IsBoolean, IsEmail, IsOptional, IsString, MinLength } from "class-validator"
 
-export class CreateClientDto {
+export class CreateUserDto {
     @IsString()
     @MinLength(3)
     firstName: string

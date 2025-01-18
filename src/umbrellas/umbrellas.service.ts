@@ -3,13 +3,13 @@ import { CreateUmbrellaDto } from './dto/create-umbrella.dto';
 import { UpdateUmbrellaDto } from './dto/update-umbrella.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Umbrella } from 'database/models/umbrella.model';
-import { Client } from 'database/models/clients.model';
+import { User } from 'database/models/user.model';
 
 @Injectable()
 export class UmbrellasService {
   constructor(
     @InjectModel(Umbrella) private readonly modelUmbrella: typeof Umbrella,
-    @InjectModel(Client) private readonly modelClient: typeof Client,
+    @InjectModel(User) private readonly modelUser: typeof User,
   ) {}
 
   create(createUmbrellaDto: CreateUmbrellaDto) {
@@ -18,7 +18,7 @@ export class UmbrellasService {
 
   findAll() {
     const umbrellas = this.modelUmbrella.findAll({
-      include: Client,
+      include: User,
     });
     return umbrellas;
   }

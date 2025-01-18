@@ -17,5 +17,5 @@ export class CreateUmbrellaDto {
 
   @IsUUID()
   @IsOptional()
-  clientId: string;
+  userId: string;
 }

@@ -4,8 +4,8 @@ import { Tent } from "./tent.model";
 import { Umbrella } from "./umbrella.model";
 import { Address } from "./address.model";
 
-@Table({ tableName: 'clients', timestamps: true }) 
-export class Client extends Model<Client> {
+@Table({ tableName: 'users', timestamps: true }) 
+export class User extends Model<User> {
   @Column({
     type: DataType.UUID,
     primaryKey: true,

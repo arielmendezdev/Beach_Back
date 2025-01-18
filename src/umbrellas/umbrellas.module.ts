@@ -3,10 +3,10 @@ import { UmbrellasService } from './umbrellas.service';
 import { UmbrellasController } from './umbrellas.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Umbrella } from 'database/models/umbrella.model';
-import { Client } from 'database/models/clients.model';
+import { User } from 'database/models/user.model';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Umbrella, Client])],
+  imports: [SequelizeModule.forFeature([Umbrella, User])],
   exports: [SequelizeModule],
   controllers: [UmbrellasController],
   providers: [UmbrellasService],

@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientsModule } from './clients/clients.module';
+import { UsersModule } from './users/users.module';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Client } from 'database/models/clients.model';
+import { User } from 'database/models/user.model';
 import { Address } from 'database/models/address.model';
 import { AddressesModule } from './addresses/addresses.module';
 import { EmployeesModule } from './employees/employees.module';
@@ -29,7 +29,7 @@ require('dotenv').config();
       database: process.env.PGDATABASE || process.env.DB_DATABASE,
       password: process.env.PGPASSWORD || process.env.DB_PASSWORD,
       port: parseInt(process.env.DB_PORT),
-      models: [Client, Address, Company, Owner, Tent, Umbrella, Employed],
+      models: [User, Address, Company, Owner, Tent, Umbrella, Employed],
       dialectModule: pg,
       dialectOptions: {
         ssl: {
@@ -41,7 +41,7 @@ require('dotenv').config();
       synchronize: true,
     }),
     SequelizeModule.forFeature([
-      Client,
+      User,
       Address,
       Company,
       Owner,
@@ -49,7 +49,7 @@ require('dotenv').config();
       Umbrella,
       Employed,
     ]),
-    ClientsModule,
+    UsersModule,
     AddressesModule,
     EmployeesModule,
     CompaniesModule,

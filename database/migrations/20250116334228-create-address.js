@@ -23,10 +23,10 @@ module.exports = {
       description: {
         type: Sequelize.STRING,
       },
-      clientId: {
+      userId: {
         type: Sequelize.UUID,
         references: {
-          model: 'clients',
+          model: 'users',
           key: 'id'
         },
         onUpdate: 'CASCADE',

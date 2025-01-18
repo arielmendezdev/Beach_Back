@@ -21,5 +21,5 @@ export class CreateTentDto {
 
   @IsUUID()
   @IsOptional()
-  clientId: string;
+  userId: string;
 }

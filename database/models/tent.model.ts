@@ -1,41 +1,40 @@
-import { UUIDTypes } from "uuid";
-import { Column, DataType, HasOne, Model, Table } from "sequelize-typescript";
-import { Client } from "./clients.model";
+import { UUIDTypes } from 'uuid';
+import { Column, DataType, HasOne, Model, Table } from 'sequelize-typescript';
+import { User } from './user.model';
 
-@Table({ tableName: 'tents', timestamps: true }) 
+@Table({ tableName: 'tents', timestamps: true })
 export class Tent extends Model<Tent> {
   @Column({
     type: DataType.UUID,
     primaryKey: true,
-    defaultValue: DataType.UUIDV4
+    defaultValue: DataType.UUIDV4,
   })
-  id: UUIDTypes
+  id: UUIDTypes;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  number: string
-  
+  number: string;
+
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  corridor: string
-  
+  corridor: string;
+
   @Column({
     type: DataType.STRING,
     defaultValue: false,
   })
-  isDeleted: boolean
+  isDeleted: boolean;
 
   @Column({
     type: DataType.STRING,
     defaultValue: true,
   })
-  isAvailable: boolean
+  isAvailable: boolean;
 
-  @HasOne(() => Client)
-  client!: Client
-
+  @HasOne(() => User)
+  user!: User;
 }

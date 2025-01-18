@@ -3,13 +3,13 @@ import { CreateTentDto } from './dto/create-tent.dto';
 import { UpdateTentDto } from './dto/update-tent.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Tent } from 'database/models/tent.model';
-import { Client } from 'database/models/clients.model';
+import { User } from 'database/models/user.model';
 
 @Injectable()
 export class TentsService {
   constructor(
     @InjectModel(Tent) private readonly modelTent: typeof Tent,
-    @InjectModel(Client) private readonly modelClient: typeof Client,
+    @InjectModel(User) private readonly modelUser: typeof User,
   ) {}
 
   async create(createTentDto: CreateTentDto) {
@@ -19,7 +19,7 @@ export class TentsService {
 
   async findAll() {
     const tents = await this.modelTent.findAll({
-      include: Client,
+      include: User,
     });
     return tents;
   }

@@ -1,6 +1,6 @@
 import { UUIDTypes } from 'uuid';
 import { Column, DataType, HasOne, Model, Table } from 'sequelize-typescript';
-import { Client } from './clients.model';
+import { User } from './user.model';
 
 @Table({ tableName: 'umbrellas', timestamps: true })
 export class Umbrella extends Model<Umbrella> {
@@ -29,6 +29,6 @@ export class Umbrella extends Model<Umbrella> {
   })
   isAvailable: boolean;
 
-  @HasOne(() => Client)
-  client!: Client;
+  @HasOne(() => User)
+  user!: User;
 }
