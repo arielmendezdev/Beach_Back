@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": "013315",
     "database": "my_beach",
-    "host": "127.0.0.1",
+    "host": "ep-black-scene-a53b6czw-pooler.us-east-2.aws.neon.tech",
     "dialect": "postgres"
   },
   "test": {
@@ -17,7 +17,7 @@
     "username": "postgres",
     "password": "013315",
     "database": "my_beach",
-    "host": "127.0.0.1",
+    "host": "ep-black-scene-a53b6czw-pooler.us-east-2.aws.neon.tech",
     "dialect": "postgres"
   }
 }
