@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateUmbrellaDto } from './dto/create-umbrella.dto';
 import { UpdateUmbrellaDto } from './dto/update-umbrella.dto';
 import { InjectModel } from '@nestjs/sequelize';
-import { Umbrella } from 'database/models/umbrella.model';
-import { User } from 'database/models/user.model';
+import { Umbrella } from 'src/database/models/umbrella.model';
+import { User } from 'src/database/models/user.model';
 
 @Injectable()
 export class UmbrellasService {

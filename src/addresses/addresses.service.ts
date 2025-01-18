@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAddressDto } from './dto/create-address.dto';
 import { UpdateAddressDto } from './dto/update-address.dto';
-import { Address } from 'database/models/address.model';
+import { Address } from 'src/database/models/address.model';
 import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()

@@ -6,19 +6,19 @@ import { AppService } from './app.service';
 import pg from 'pg';
 
 import { AddressesModule } from './addresses/addresses.module';
-import { Address } from 'database/models/address.model';
+import { Address } from 'src/database/models/address.model';
 import { CompaniesModule } from './companies/companies.module';
-import { Company } from 'database/models/company.model';
+import { Company } from 'src/database/models/company.model';
 import { EmployeesModule } from './employees/employees.module';
-import { Employed } from 'database/models/employed.model';
+import { Employed } from 'src/database/models/employed.model';
 import { OwnersModule } from './owners/owners.module';
-import { Owner } from 'database/models/owner.model';
+import { Owner } from 'src/database/models/owner.model';
 import { TentsModule } from './tents/tents.module';
-import { Tent } from 'database/models/tent.model';
+import { Tent } from 'src/database/models/tent.model';
 import { UmbrellasModule } from './umbrellas/umbrellas.module';
-import { Umbrella } from 'database/models/umbrella.model';
+import { Umbrella } from 'src/database/models/umbrella.model';
 import { UsersModule } from './users/users.module';
-import { User } from 'database/models/user.model';
+import { User } from 'src/database/models/user.model';
 
 require('dotenv').config();
 

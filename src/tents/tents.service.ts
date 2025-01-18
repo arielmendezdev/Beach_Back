@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateTentDto } from './dto/create-tent.dto';
 import { UpdateTentDto } from './dto/update-tent.dto';
 import { InjectModel } from '@nestjs/sequelize';
-import { Tent } from 'database/models/tent.model';
-import { User } from 'database/models/user.model';
+import { Tent } from 'src/database/models/tent.model';
+import { User } from 'src/database/models/user.model';
 
 @Injectable()
 export class TentsService {
