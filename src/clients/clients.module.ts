@@ -4,10 +4,10 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { ClientsService } from './clients.service';
 import { ClientsController } from './clients.controller';
 
-import { Client } from 'src/database/models/clients.model';
-import { Address } from 'src/database/models/address.model';
-import { Tent } from 'src/database/models/tent.model';
-import { Umbrella } from 'src/database/models/umbrella.model';
+import { Client } from 'database/models/clients.model';
+import { Address } from 'database/models/address.model';
+import { Tent } from 'database/models/tent.model';
+import { Umbrella } from 'database/models/umbrella.model';
 
 @Module({
   imports: [SequelizeModule.forFeature([Client, Address, Tent, Umbrella])],
