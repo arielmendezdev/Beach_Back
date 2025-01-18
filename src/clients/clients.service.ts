@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
+
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
+
 import { Client } from 'database/models/clients.model';
-import { InjectModel } from '@nestjs/sequelize';
 import { Address } from 'database/models/address.model';
 import { Tent } from 'database/models/tent.model';
 import { Umbrella } from 'database/models/umbrella.model';
@@ -23,7 +25,7 @@ export class ClientsService {
     if (createClientDto.tentId) {
       const tent = await this.modelTent.findByPk(createClientDto.tentId)
       if (tent.dataValues.isAvailable) {
-        await tent.set({
+        tent.set({
           ...tent.dataValues,
           isAvailable: false
         })
