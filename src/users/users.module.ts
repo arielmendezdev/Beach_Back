@@ -11,7 +11,6 @@ import { Umbrella } from '../database/models/umbrella.model';
 
 @Module({
   imports: [SequelizeModule.forFeature([User, Address, Tent, Umbrella])],
-  exports: [SequelizeModule],
   controllers: [UsersController],
   providers: [UsersService],
 })

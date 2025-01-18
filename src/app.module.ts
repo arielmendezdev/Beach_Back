@@ -59,6 +59,7 @@ require('dotenv').config();
     TentsModule,
     UmbrellasModule,
   ],
+  exports: [SequelizeModule],
   controllers: [AppController],
   providers: [AppService],
 })

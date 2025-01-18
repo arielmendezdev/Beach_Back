@@ -7,7 +7,6 @@ import { User } from '../database/models/user.model';
 
 @Module({
   imports: [SequelizeModule.forFeature([Tent, User])],
-  exports: [SequelizeModule],
   controllers: [TentsController],
   providers: [TentsService],
 })

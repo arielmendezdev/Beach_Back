@@ -7,7 +7,6 @@ import { User } from '../database/models/user.model';
 
 @Module({
   imports: [SequelizeModule.forFeature([Umbrella, User])],
-  exports: [SequelizeModule],
   controllers: [UmbrellasController],
   providers: [UmbrellasService],
 })

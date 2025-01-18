@@ -7,7 +7,6 @@ import { Company } from '../database/models/company.model';
 
 @Module({
   imports: [SequelizeModule.forFeature([Employed, Company])],
-  exports: [SequelizeModule],
   controllers: [EmployeesController],
   providers: [EmployeesService],
 })

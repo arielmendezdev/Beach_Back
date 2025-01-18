@@ -12,12 +12,12 @@ export class OwnersService {
     @InjectModel(Company) private readonly modelCompany: typeof Company,
   ) {}
 
-  create(createOwnerDto: CreateOwnerDto) {
-    const newOwner = this.modelOwner.create(createOwnerDto);
+  async create(createOwnerDto: CreateOwnerDto) {
+    const newOwner = await this.modelOwner.create(createOwnerDto);
     return newOwner;
   }
 
-  findAll() {
+  async findAll(): Promise<Owner[]> {
     const owners = this.modelOwner.findAll({
       include: Company,
     });
