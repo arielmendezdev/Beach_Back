@@ -10,6 +10,9 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      "database/*": ["database/*"]
+    },
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,

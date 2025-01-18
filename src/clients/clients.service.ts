@@ -40,10 +40,6 @@ export class ClientsService {
       return newClient;
     }
 
-    // const tent = await this.modelTent.findByPk(createClientDto.tentId)
-
-
-    
   }
 
   async findAll() {
