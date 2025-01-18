@@ -30,7 +30,7 @@ require('dotenv').config();
       username: process.env.PGUSER || process.env.DB_USERNAME,
       database: process.env.PGDATABASE || process.env.DB_DATABASE,
       password: process.env.PGPASSWORD || process.env.DB_PASSWORD,
-      port: parseInt(process.env.DB_PORT),
+      // port: parseInt(process.env.DB_PORT),
       models: [User, Address, Company, Owner, Tent, Umbrella, Employed],
       dialectModule: pg,
       dialectOptions: {
