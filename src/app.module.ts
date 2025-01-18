@@ -1,22 +1,24 @@
 import { Module } from '@nestjs/common';
+import { SequelizeModule } from '@nestjs/sequelize';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-import { SequelizeModule } from '@nestjs/sequelize';
-import { User } from 'database/models/user.model';
-import { Address } from 'database/models/address.model';
-import { AddressesModule } from './addresses/addresses.module';
-import { EmployeesModule } from './employees/employees.module';
-import { CompaniesModule } from './companies/companies.module';
-import { OwnersModule } from './owners/owners.module';
-import { TentsModule } from './tents/tents.module';
-import { UmbrellasModule } from './umbrellas/umbrellas.module';
-import { Company } from 'database/models/company.model';
-import { Owner } from 'database/models/owner.model';
-import { Tent } from 'database/models/tent.model';
-import { Umbrella } from 'database/models/umbrella.model';
-import { Employed } from 'database/models/employed.model';
 import pg from 'pg';
+
+import { AddressesModule } from './addresses/addresses.module';
+import { Address } from 'database/models/address.model';
+import { CompaniesModule } from './companies/companies.module';
+import { Company } from 'database/models/company.model';
+import { EmployeesModule } from './employees/employees.module';
+import { Employed } from 'database/models/employed.model';
+import { OwnersModule } from './owners/owners.module';
+import { Owner } from 'database/models/owner.model';
+import { TentsModule } from './tents/tents.module';
+import { Tent } from 'database/models/tent.model';
+import { UmbrellasModule } from './umbrellas/umbrellas.module';
+import { Umbrella } from 'database/models/umbrella.model';
+import { UsersModule } from './users/users.module';
+import { User } from 'database/models/user.model';
 
 require('dotenv').config();
 
@@ -33,8 +35,8 @@ require('dotenv').config();
       dialectModule: pg,
       dialectOptions: {
         ssl: {
-          require: true, // Requiere SSL
-          rejectUnauthorized: false, // Si es un certificado auto-firmado
+          require: true,
+          rejectUnauthorized: false,
         },
       },
       autoLoadModels: true,
