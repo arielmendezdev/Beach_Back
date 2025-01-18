@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   if (process.env.NODE_ENV === 'production') {
-    app.useLogger(['error', 'warn']); // Solo registra errores y advertencias
+    app.useLogger(['error', 'warn']);
   } else {
     app.useLogger(['log', 'debug', 'error', 'warn', 'verbose']);
   }
@@ -14,7 +14,7 @@ async function bootstrap() {
   app.useGlobalPipes( new ValidationPipe({
     whitelist: true
   }))
-  
+
   await app.listen(process.env.PORT ?? 3000);
 }
 
