@@ -5,7 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 import { User } from 'src/database/models/user.model';
-import { Address } from 'src/database/models/address.model';
+import { Address } from 'database/models/address.model';
 import { Tent } from 'src/database/models/tent.model';
 import { Umbrella } from 'src/database/models/umbrella.model';
 
