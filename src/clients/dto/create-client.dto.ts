@@ -1,4 +1,4 @@
-import { IsBoolean, IsEmail, IsOptional, IsString, MaxLength, MinLength } from "class-validator"
+import { IsBoolean, IsEmail, IsOptional, IsString, MinLength } from "class-validator"
 
 export class CreateClientDto {
     @IsString()
@@ -10,7 +10,19 @@ export class CreateClientDto {
     lastName: string
     
     @IsString()
+    @IsOptional()
+    userName: string
+    
+    @IsString()
     dni: string
+
+    @IsString()
+    phone: string
+
+    @IsString()
+    @IsEmail()
+    @IsOptional()
+    email: string
     
     @IsBoolean()
     @IsOptional()
@@ -21,18 +33,10 @@ export class CreateClientDto {
     isAvailable: boolean
     
     @IsString()
-    phone: string
-
-    @IsString()
-    @IsEmail()
     @IsOptional()
-    email: string
+    tentId: string
     
     @IsString()
     @IsOptional()
-    userName: string
-    
-    @IsString()
-    @MaxLength(2)
-    tentNumber: string
+    umbrellaId: string
 }

@@ -1,6 +1,9 @@
 import { UUIDTypes } from 'uuid';
 import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { Client } from './clients.model';
+import { Employed } from './employed.model';
+import { Company } from './company.model';
+import { Owner } from './owner.model';
 
 @Table({ tableName: 'addresses', timestamps: true })
 export class Address extends Model<Address> {
@@ -37,11 +40,37 @@ export class Address extends Model<Address> {
   @ForeignKey(() => Client)
   @Column({
     type: DataType.UUID,
-    allowNull: false,
   })
   clientId: UUIDTypes;
 
+  @ForeignKey(() => Employed)
+  @Column({
+    type: DataType.UUID,
+  })
+  employedId: UUIDTypes;
+
+  @ForeignKey(() => Company)
+  @Column({
+    type: DataType.UUID,
+  })
+  companyId: UUIDTypes;
+
+  @ForeignKey(() => Owner)
+  @Column({
+    type: DataType.UUID,
+  })
+  ownerId: UUIDTypes;
+
   @BelongsTo(() => Client)
   client!: Client
+
+  @BelongsTo(() => Employed)
+  employed!: Employed
+
+  @BelongsTo(() => Company)
+  company!: Company
+
+  @BelongsTo(() => Owner)
+  owner!: Owner
 
 }

@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('clients', {
+    await queryInterface.createTable('owners', {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
@@ -11,50 +11,43 @@ module.exports = {
       },
       firstName: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       lastName: {
         type: Sequelize.STRING,
-        allowNull: false,
-      },
-      isDeleted: {
-        type: Sequelize.BOOLEAN
-      },
-      isAvailable: {
-        type: Sequelize.BOOLEAN
       },
       phone: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
-      address: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      userName: {
-        type: Sequelize.STRING
-      },
-      tentNumber: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      isDeleted: {
+        type: Sequelize.BOOLEAN,
       },
       dni: {
         type: Sequelize.STRING,
+      },
+      email: {
+        type: Sequelize.STRING,
+      },
+      companyId: {
+        type: Sequelize.UUID,
         allowNull: false,
+        references: {
+          model: 'companies',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('clients');
+    await queryInterface.dropTable('owners');
   }
 };

@@ -11,12 +11,12 @@ export class ClientsController {
   @Post()
   create(
     @Body() createClientDto: CreateClientDto,
-    @Req() req: Request,
-    @Res() res: Response,
+
   ) {
     try {
       const newClient = this.clientsService.create(createClientDto)
-      return res.send(newClient)
+      return newClient
+      // return res.send(newClient)
     } catch (error) {
       return error
     }

@@ -25,9 +25,35 @@ module.exports = {
       },
       clientId: {
         type: Sequelize.UUID,
-        allowNull: false,
         references: {
           model: 'clients',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      employedId: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'employees',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      companyId: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'companies',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      ownerId: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'owners',
           key: 'id'
         },
         onUpdate: 'CASCADE',

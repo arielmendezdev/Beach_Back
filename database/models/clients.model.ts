@@ -1,5 +1,7 @@
 import { UUIDTypes } from "uuid";
-import { Column, DataType, HasOne, Model, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
+import { Tent } from "./tent.model";
+import { Umbrella } from "./umbrella.model";
 import { Address } from "./address.model";
 
 @Table({ tableName: 'clients', timestamps: true }) 
@@ -32,7 +34,6 @@ export class Client extends Model<Client> {
   @Column({
     type: DataType.STRING,
     defaultValue: true,
-    
   })
   isAvailable: boolean
   
@@ -58,11 +59,23 @@ export class Client extends Model<Client> {
   })
   userName: string
   
+  @ForeignKey(() => Tent)
   @Column({
-    type: DataType.STRING,
-    allowNull: false,
+    type: DataType.UUID,
   })
-  tentNumber: string
+  tentId!: UUIDTypes
+
+  @ForeignKey(() => Umbrella)
+  @Column({
+    type: DataType.UUID,
+  })
+  umbrellaId!: UUIDTypes
+
+  @BelongsTo(() => Tent)
+  tent!: Tent
+
+  @BelongsTo(() => Umbrella)
+  umbrella!: Umbrella
 
   @HasOne(() => Address)
   address!: Address
