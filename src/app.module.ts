@@ -6,7 +6,7 @@ import { AppService } from './app.service';
 import pg from 'pg';
 
 import { AddressesModule } from './addresses/addresses.module';
-import { Address } from 'database/models/address.model';
+import { Address } from 'src/database/models/address.model';
 import { CompaniesModule } from './companies/companies.module';
 import { Company } from 'src/database/models/company.model';
 import { EmployeesModule } from './employees/employees.module';
