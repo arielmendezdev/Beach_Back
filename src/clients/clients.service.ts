@@ -4,10 +4,10 @@ import { InjectModel } from '@nestjs/sequelize';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 
-import { Client } from 'database/models/clients.model';
-import { Address } from 'database/models/address.model';
-import { Tent } from 'database/models/tent.model';
-import { Umbrella } from 'database/models/umbrella.model';
+import { Client } from 'src/database/models/clients.model';
+import { Address } from 'src/database/models/address.model';
+import { Tent } from 'src/database/models/tent.model';
+import { Umbrella } from 'src/database/models/umbrella.model';
 
 @Injectable()
 export class ClientsService {
@@ -19,48 +19,40 @@ export class ClientsService {
   ) {}
 
   async create(createClientDto: CreateClientDto) {
-
     // console.log(createClientDto)
 
     if (createClientDto.tentId) {
-      const tent = await this.modelTent.findByPk(createClientDto.tentId)
+      const tent = await this.modelTent.findByPk(createClientDto.tentId);
       if (tent.dataValues.isAvailable) {
         tent.set({
           ...tent.dataValues,
-          isAvailable: false
-        })
-        tent.save()
+          isAvailable: false,
+        });
+        tent.save();
         const newClient = await this.modelClient.create(createClientDto);
         return newClient;
       } else {
-        return 'La carpa esta ocupada'
+        return 'La carpa esta ocupada';
       }
     } else {
       const newClient = await this.modelClient.create(createClientDto);
       return newClient;
     }
-
   }
 
   async findAll() {
-    const clients = await this.modelClient.findAll(
-      {
-        include: [
-          Address,
-          Tent,
-          Umbrella,
-        ]
-      }
-  );
+    const clients = await this.modelClient.findAll({
+      include: [Address, Tent, Umbrella],
+    });
     return clients;
   }
 
   async findOne(id: string) {
     const client = await this.modelClient.findByPk(id);
-    if (client) return client
-    return 'Client not Found'
+    if (client) return client;
+    return 'Client not Found';
   }
-  
+
   async update(id: string, updateClientDto: UpdateClientDto) {
     const updateClient = await this.modelClient.findByPk(id);
 
@@ -68,9 +60,9 @@ export class ClientsService {
       updateClient.set({
         ...updateClientDto,
         tentId: null,
-      })
-      await updateClient.save()
-      return updateClient
+      });
+      await updateClient.save();
+      return updateClient;
     }
 
     if (updateClient.tentId) {
@@ -78,44 +70,43 @@ export class ClientsService {
         where: { id: updateClient.tentId },
       });
       if (!tent) {
-        updateClient.set(updateClientDto)
-        await updateClient.save()
-        return updateClient
+        updateClient.set(updateClientDto);
+        await updateClient.save();
+        return updateClient;
       } else {
-        return 'La carpa ya esta ocupada'
+        return 'La carpa ya esta ocupada';
       }
     } else {
-      updateClient.set(updateClientDto)
-      await updateClient.save()
+      updateClient.set(updateClientDto);
+      await updateClient.save();
       const tent = await this.modelTent.findOne({
         where: { id: updateClient.tentId },
       });
       if (tent.isAvailable) {
-        updateClient.set(updateClientDto)
-        await updateClient.save()
-        return updateClient
-      } else{
-        return 'La carpa ya esta ocupada'
+        updateClient.set(updateClientDto);
+        await updateClient.save();
+        return updateClient;
+      } else {
+        return 'La carpa ya esta ocupada';
       }
     }
   }
-  
+
   async remove(id: string) {
     const client = await this.modelClient.findByPk(id);
     // console.log(client.dataValues.tentId)
-    
+
     if (client.dataValues.tentId) {
-      console.log(client.dataValues.tentId)
+      console.log(client.dataValues.tentId);
       const tent = await this.modelTent.findOne({
         where: { id: client.dataValues.tentId },
       });
-      await tent.set({ isAvailable: true })
+      await tent.set({ isAvailable: true });
       tent.save();
     }
 
     client.set({ isDeleted: true });
     client.save();
-    return "Client deleted successfully"
-    
+    return 'Client deleted successfully';
   }
 }

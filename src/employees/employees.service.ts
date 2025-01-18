@@ -2,12 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { CreateEmployeesDto } from './dto/create-employees.dto';
 import { UpdateEmployeesDto } from './dto/update-employees.dto';
 import { InjectModel } from '@nestjs/sequelize';
-import { Employed } from 'database/models/employed.model';
+import { Employed } from 'src/database/models/employed.model';
 
 @Injectable()
 export class EmployeesService {
-
-  constructor(@InjectModel(Employed) private readonly modelEmployed: typeof Employed){}
+  constructor(
+    @InjectModel(Employed) private readonly modelEmployed: typeof Employed,
+  ) {}
 
   create(createEmployeeDto: CreateEmployeesDto) {
     return 'This action adds a new employee';
