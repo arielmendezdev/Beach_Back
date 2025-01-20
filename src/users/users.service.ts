@@ -43,6 +43,7 @@ export class UsersService {
   async findAll() {
     const users = await this.modelUser.findAll({
       include: [Address, Tent, Umbrella],
+      where: { isDeleted: true },
     });
     return users;
   }

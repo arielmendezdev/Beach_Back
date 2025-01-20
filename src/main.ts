@@ -9,6 +9,8 @@ async function bootstrap() {
     whitelist: true
   }))
 
+  app.enableCors()
+
   // app.setGlobalPrefix('api/v1') // Esto es para asignarle a todas las urls el prefijo
 
   await app.listen(process.env.PORT ?? 3000);

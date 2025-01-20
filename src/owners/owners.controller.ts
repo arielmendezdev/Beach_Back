@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { OwnersService } from './owners.service';
 import { CreateOwnerDto } from './dto/create-owner.dto';
 import { UpdateOwnerDto } from './dto/update-owner.dto';
@@ -13,8 +22,12 @@ export class OwnersController {
   }
 
   @Get()
-  findAll() {
-    return this.ownersService.findAll();
+  findAll(@Query('isDeleted') isDeleted?: string) {
+    let query: any = {}
+    if (isDeleted !== undefined) {
+      query['isDeleted'] = isDeleted === 'true' 
+    }
+    return this.ownersService.findAll(query);
   }
 
   @Get(':id')

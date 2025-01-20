@@ -17,9 +17,10 @@ export class OwnersService {
     return newOwner;
   }
 
-  async findAll(): Promise<Owner[]> {
+  async findAll(filter: { isDeleted?: boolean }): Promise<Owner[]> {
     const owners = this.modelOwner.findAll({
       include: Company,
+      where: filter,
     });
     return owners;
   }
